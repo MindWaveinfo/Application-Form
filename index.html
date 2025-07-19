@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fresher Application</title>
+    <title>MindWave Fresher Application Form</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -20,7 +20,6 @@
         form {
             background-color: #ffffff;
             max-width: 800px;
-            /* Increased max-width for two columns */
             margin: 0 auto;
             padding: 2.5rem;
             border-radius: 12px;
@@ -28,10 +27,23 @@
             border: 1px solid #e0e0e0;
         }
 
+        /* ---- NEW: Logo Styling ---- */
+        .form-logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-logo img {
+            max-width: 480px;
+            /* Adjust size if needed */
+            height: auto;
+        }
+
         h1 {
             color: #2c3e50;
             text-align: center;
             margin-bottom: 1rem;
+            margin-top: 0;
         }
 
         h2 {
@@ -59,10 +71,7 @@
             margin-bottom: 1rem;
         }
 
-        p.field-note {
-            color: #e74c3c;
-        }
-
+        p.field-note,
         p.instruction-note {
             color: #e74c3c;
         }
@@ -96,20 +105,16 @@
             min-height: 80px;
         }
 
-        /* ---- NEW: Two-Column Layout ---- */
         .form-row {
             display: flex;
             gap: 20px;
-            /* Space between columns */
         }
 
         .form-group {
             flex: 1;
-            /* Each group takes up equal space */
             min-width: 0;
         }
 
-        /* ---- Custom File Input Simulation ---- */
         .file-input-hidden {
             display: none;
         }
@@ -171,12 +176,10 @@
             box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
         }
 
-        /* ---- NEW: Responsive behavior for smaller screens ---- */
         @media (max-width: 768px) {
             .form-row {
                 flex-direction: column;
                 gap: 0;
-                /* Remove gap when stacked */
             }
         }
     </style>
@@ -186,7 +189,12 @@
 
     <form action="https://formspree.io/f/xzzvzllz" method="POST" enctype="multipart/form-data">
 
-        <h1>MindWave Fresher Application Form</h1>
+        <!-- NEW: Logo Added -->
+        <div class="form-logo">
+            <img src="mindwave.jpg" alt="MindWave Informatics Logo">
+        </div>
+
+        <h1>Fresher Application</h1>
 
         <h2>Personal Information</h2>
         <div class="form-row">
