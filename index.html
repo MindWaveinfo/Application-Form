@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Application Form</title>
+    <title>MindWave Fresher Application Form</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* ---- General Body & Font Styling ---- */
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f4f7f6;
@@ -17,10 +17,10 @@
             padding: 2rem 1rem;
         }
 
-        /* ---- Form Container ---- */
         form {
             background-color: #ffffff;
-            max-width: 700px;
+            max-width: 800px;
+            /* Increased max-width for two columns */
             margin: 0 auto;
             padding: 2.5rem;
             border-radius: 12px;
@@ -31,11 +31,18 @@
         h1 {
             color: #2c3e50;
             text-align: center;
-            margin-bottom: 2rem;
-            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
-        /* ---- Labels and Notes ---- */
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
         label {
             display: block;
             margin-bottom: 0.5rem;
@@ -44,16 +51,28 @@
             font-size: 0.9rem;
         }
 
-        p.field-note {
+        p.field-note,
+        p.instruction-note {
             font-size: 0.8rem;
-            color: #cc0707;
             font-weight: 400;
-            margin-top: -0.5rem;
+            margin-top: -0.75rem;
             margin-bottom: 1rem;
         }
 
-        /* ---- General Input Field Styling ---- */
-        input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea {
+        p.field-note {
+            color: #e74c3c;
+        }
+
+        p.instruction-note {
+            color: #e74c3c;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        textarea {
             width: 100%;
             padding: 12px;
             margin-bottom: 1.25rem;
@@ -65,7 +84,8 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        input:focus, textarea:focus {
+        input:focus,
+        textarea:focus {
             outline: none;
             border-color: #007bff;
             box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
@@ -73,12 +93,25 @@
 
         textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 80px;
         }
-        
+
+        /* ---- NEW: Two-Column Layout ---- */
+        .form-row {
+            display: flex;
+            gap: 20px;
+            /* Space between columns */
+        }
+
+        .form-group {
+            flex: 1;
+            /* Each group takes up equal space */
+            min-width: 0;
+        }
+
         /* ---- Custom File Input Simulation ---- */
         .file-input-hidden {
-            display: none; /* Hide the real file input */
+            display: none;
         }
 
         .file-input-custom {
@@ -115,30 +148,11 @@
             color: #007bff;
             text-decoration: none;
         }
+
         .file-name-text a:hover {
             text-decoration: underline;
         }
 
-        /* ---- Checkbox Styling ---- */
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            height: 1.2em;
-            width: 1.2em;
-            margin-right: 0.75rem;
-            cursor: pointer;
-            accent-color: #007bff;
-        }
-        .checkbox-group label {
-            margin-bottom: 0;
-            font-weight: 400;
-        }
-
-        /* ---- Submit Button ---- */
         button[type="submit"] {
             width: 100%;
             padding: 15px;
@@ -149,105 +163,228 @@
             border-radius: 8px;
             font-size: 1.1rem;
             font-weight: 600;
+            margin-top: 2rem;
         }
 
         button[type="submit"]:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
         }
+
+        /* ---- NEW: Responsive behavior for smaller screens ---- */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+                /* Remove gap when stacked */
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <form action="https://formspree.io/f/xzzvzllz" method="POST" enctype="multipart/form-data">
-        
+
         <h1>MindWave Fresher Application Form</h1>
 
-        <label for="fullName">Full Name(As per Adhaar)</label>
-        <input type="text" id="fullName" name="FullName" placeholder="Enter your Full Name" required>
+        <h2>Personal Information</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="fullName">Full Name (as per Aadhaar)</label>
+                <input type="text" id="fullName" name="FullName" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="DateOfBirth" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="fatherName">Father's Name</label>
+                <input type="text" id="fatherName" name="FatherName" placeholder="Enter your father's name" required>
+            </div>
+            <div class="form-group">
+                <label for="guardianPhone">Father/Guardian Phone Number</label>
+                <input type="tel" id="guardianPhone" name="GuardianPhoneNumber" placeholder="Enter 10-digit number"
+                    pattern="[0-9]{10}" title="Phone number must be exactly 10 digits." required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="panNumber">PAN Card Number</label>
+                <input type="text" id="panNumber" name="PanCardNumber" placeholder="Enter your 10-character PAN"
+                    pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                    title="Please enter a valid 10-character PAN number (e.g., ABCDE1234F)." required>
+                <p class="field-note">Note: You must have a valid PAN card.</p>
+            </div>
+            <div class="form-group">
+                <label for="aadhaarNumber">Aadhaar Card Number</label>
+                <input type="text" id="aadhaarNumber" name="AadhaarCardNumber"
+                    placeholder="Enter your 12-digit Aadhaar number" pattern="[0-9]{12}"
+                    title="Aadhaar number must be exactly 12 digits." required>
+                <p class="field-note">Note: Aadhaar is mandatory for verification.</p>
+            </div>
+        </div>
 
-        <label for="emailAddress">Email Address</label>
-        <input type="email" id="emailAddress" name="EmailAddress" placeholder="Enter your Email Address" required>
+        <h2>Contact & General Details</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" id="phoneNumber" name="PhoneNumber" placeholder="Enter your 10-digit personal number"
+                    pattern="[0-9]{10}" title="Phone number must be exactly 10 digits." required>
+            </div>
+            <div class="form-group">
+                <label for="emailAddress">Email Address</label>
+                <input type="email" id="emailAddress" name="EmailAddress"
+                    placeholder="Enter your personal email address" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address">Full Address</label>
+            <textarea id="address" name="Address" placeholder="Enter your complete current address" required></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="preferredLocation">Preferred Location</label>
+                <input type="text" id="preferredLocation" name="PreferredLocation"
+                    placeholder="e.g., Hyderabad, Bangalore" required>
+            </div>
+            <div class="form-group">
+                <label for="referredBy">Referred By (if any)</label>
+                <input type="text" id="referredBy" name="ReferredBy" placeholder="Enter name of referrer, or N/A">
+            </div>
+        </div>
 
-        <label for="phoneNumber">Phone Number</label>
-        <input type="tel" id="phoneNumber" name="PhoneNumber" placeholder="Enter your PhoneNumber" required>
+        <h2>Educational Qualifications</h2>
 
-        <label for="address">Full Address</label>
-        <textarea id="address" name="Address" placeholder="Enter your full address" required></textarea>
+        <h3>Post-Graduation (PG)</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="pgCollegeName">PG College Name</label>
+                <input type="text" id="pgCollegeName" name="PG_CollegeName" placeholder="Enter college name or N/A">
+            </div>
+            <div class="form-group">
+                <label for="pgPassoutYear">Year of Passout (PG)</label>
+                <input type="number" id="pgPassoutYear" name="PG_PassoutYear" min="2015" max="2030"
+                    placeholder="e.g., 2026">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="pgPercentage">PG Percentage or Grade</label>
+                <input type="text" id="pgPercentage" name="PG_Percentage" placeholder="e.g., 85% or 8.5 CGPA">
+            </div>
+            <div class="form-group">
+                <label for="pgRollNumber">College Roll Number (PG)</label>
+                <input type="text" id="pgRollNumber" name="PG_RollNumber" placeholder="Enter your PG roll number">
+            </div>
+        </div>
 
-        <label for="currentLocation">Current City of Residence</label>
-        <input type="text" id="currentLocation" name="CurrentLocation" placeholder="Current City of Residence" required>
+        <h3>Under-Graduation (UG) / Degree</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="ugCollegeName">Degree (UG) College Name</label>
+                <input type="text" id="ugCollegeName" name="UG_CollegeName" placeholder="Enter your degree college name"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="ugPassoutYear">Degree Year of Passout (UG)</label>
+                <input type="number" id="ugPassoutYear" name="UG_PassoutYear" min="2015" max="2030"
+                    placeholder="e.g., 2024" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="ugStream">Stream</label>
+                <input type="text" id="ugStream" name="UG_Stream" placeholder="e.g., Computer Science" required>
+            </div>
+            <div class="form-group">
+                <label for="ugPercentage">Percentage or Grade (UG)</label>
+                <input type="text" id="ugPercentage" name="UG_Percentage" placeholder="e.g., 75% or 7.5 CGPA" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ugRollNumber">College Roll Number (UG)</label>
+            <input type="text" id="ugRollNumber" name="UG_RollNumber" placeholder="Enter your UG roll number" required>
+        </div>
 
-        <label for="collegeName">College Name</label>
-        <input type="text" id="collegeName" name="CollegeName" placeholder="Enter your college name" required>
+        <h3>Intermediate / 12th Grade</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="interCollege">Intermediate College Name</label>
+                <input type="text" id="interCollege" name="Inter_CollegeName"
+                    placeholder="Enter 12th grade college/school" required>
+            </div>
+            <div class="form-group">
+                <label for="interPassoutYear">Year of Passout (Intermediate)</label>
+                <input type="number" id="interPassoutYear" name="Inter_PassoutYear" min="2010" max="2025"
+                    placeholder="e.g., 2021" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="interBoard">Board of Education (Intermediate)</label>
+                <input type="text" id="interBoard" name="Inter_Board" placeholder="e.g., CBSE, State Board" required>
+            </div>
+            <div class="form-group">
+                <label for="interPercentage">Percentage or Grade (Intermediate)</label>
+                <input type="text" id="interPercentage" name="Inter_Percentage" placeholder="e.g., 90% or 9.0 GPA"
+                    required>
+            </div>
+        </div>
 
-        <label for="branch">Branch</label>
-        <input type="text" id="branch" name="Branch" placeholder="e.g., Computer Science Engineering" required>
+        <h3>School / 10th Grade</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="schoolName">10th School Name</label>
+                <input type="text" id="schoolName" name="School_Name" placeholder="Enter 10th grade school" required>
+            </div>
+            <div class="form-group">
+                <label for="sscPassoutYear">SSC Year of Passout</label>
+                <input type="number" id="sscPassoutYear" name="SSC_PassoutYear" min="2008" max="2023"
+                    placeholder="e.g., 2019" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="sscBoard">Board of Education (SSC)</label>
+                <input type="text" id="sscBoard" name="SSC_Board" placeholder="e.g., CBSE, State Board" required>
+            </div>
+            <div class="form-group">
+                <label for="sscPercentage">Percentage or Grade (SSC)</label>
+                <input type="text" id="sscPercentage" name="SSC_Percentage" placeholder="e.g., 95% or 9.5 GPA" required>
+            </div>
+        </div>
 
-        <label for="collegeLocation">College Location</label>
-        <input type="text" id="collegeLocation" name="CollegeLocation" placeholder="Location" required>
-        
-        <label for="graduationYear">Graduation Year (B.Tech)</label>
-        <input type="number" id="graduationYear" name="GraduationYear" min="2015" max="2030" placeholder="e.g., 2024" required>
-
-        <label for="cgpa">CGPA in B.Tech (out of 10)</label>
-        <input type="number" id="cgpa" name="CGPA" min="0" max="10" step="0.01" placeholder="e.g., 8.5" required>
-
-        <!-- Document Uploads Section with Custom Inputs -->
-        <label for="resume">Upload Resume</label>
-        <p class="field-note">Note: Resume must include a candidate photograph on the top right corner.</p>
-        <input type="file" id="resume" name="Resume" class="file-input-hidden" accept=".pdf,.doc,.docx" required>
-        <label for="resume" class="file-input-custom">
-            <span class="file-input-button">Choose File</span>
-            <span class="file-name-text" id="resume-file-text">No file chosen</span>
-        </label>
-
-        <label for="aadhaarCard">Upload Aadhaar Card</label>
-        <input type="file" id="aadhaarCard" name="AadhaarCard" class="file-input-hidden" accept=".pdf,.jpg,.jpeg,.png" required>
-        <label for="aadhaarCard" class="file-input-custom">
-            <span class="file-input-button">Choose File</span>
-            <span class="file-name-text" id="aadhaar-file-text">No file chosen</span>
-        </label>
-
-        <label for="panCard">Upload PAN Card</label>
-        <input type="file" id="panCard" name="PanCard" class="file-input-hidden" accept=".pdf,.jpg,.jpeg,.png" required>
-        <label for="panCard" class="file-input-custom">
-            <span class="file-input-button">Choose File</span>
-            <span class="file-name-text" id="pan-file-text">No file chosen</span>
-        </label>
-        <!-- End of Document Uploads -->
-
-        <div class="checkbox-group">
-            <input type="checkbox" id="willingness" name="IsWillingToRelocate" value="Yes" required>
-            <label for="willingness">I confirm my willingness to join if selected.</label>
+        <h2>Upload Documents</h2>
+        <div class="form-group">
+            <label for="resume">Upload Resume</label>
+            <p class="instruction-note">Note: Resume must include a candidate photograph on the top right corner.</p>
+            <input type="file" id="resume" name="Resume" class="file-input-hidden" accept=".pdf,.doc,.docx" required>
+            <label for="resume" class="file-input-custom">
+                <span class="file-input-button">Choose File</span>
+                <span class="file-name-text" id="resume-file-text">No file chosen</span>
+            </label>
         </div>
 
         <button type="submit">Submit Application</button>
     </form>
-    
-    <!-- JAVASCRIPT FOR FILE PREVIEW FUNCTIONALITY -->
+
     <script>
         function setupFilePreview(inputId, textId) {
             const fileInput = document.getElementById(inputId);
             const fileNameDisplay = document.getElementById(textId);
 
-            fileInput.addEventListener('change', function() {
+            fileInput.addEventListener('change', function () {
                 if (fileInput.files.length > 0) {
                     const file = fileInput.files[0];
                     const fileURL = URL.createObjectURL(file);
-
-                    // Create the preview link
                     const link = document.createElement('a');
                     link.href = fileURL;
                     link.target = '_blank';
                     link.textContent = file.name;
-                    
-                    // Important: Stop the click from opening the file dialog again
-                    link.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                    });
-
-                    // Replace "No file chosen" with the preview link
+                    link.addEventListener('click', (e) => { e.stopPropagation(); });
                     fileNameDisplay.innerHTML = '';
                     fileNameDisplay.appendChild(link);
                 } else {
@@ -255,11 +392,9 @@
                 }
             });
         }
-
         setupFilePreview('resume', 'resume-file-text');
-        setupFilePreview('aadhaarCard', 'aadhaar-file-text');
-        setupFilePreview('panCard', 'pan-file-text');
     </script>
 
 </body>
+
 </html>
